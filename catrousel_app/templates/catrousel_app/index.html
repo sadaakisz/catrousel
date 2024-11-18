@@ -1,0 +1,18 @@
+{% load static tailwind_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    {% tailwind_css %}
+  </head>
+  <body class="bg-zinc-950 text-neutral-100">
+    <main class="flex justify-center items-center">
+        <div class="flex justify-center items-center bg-white p-8">
+            <img src="{{ random_cat_url }}" class="text-black"></img>
+        </div>
+    </main>
+    <footer>
+        <div class="w-full h-48 fixed bottom-0 bg-gradient-to-t from-zinc-950 pointer-events-none">
+    </footer>
+  </body>
+</html>
