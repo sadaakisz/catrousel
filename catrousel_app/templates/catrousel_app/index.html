@@ -5,14 +5,27 @@
   <head>
     {% tailwind_css %}
   </head>
-  <body class="bg-zinc-950 text-neutral-100">
-    <main class="flex justify-center items-center">
-        <div class="flex justify-center items-center bg-white/20 rounded-3xl p-8">
-            <img src="{{ random_cat_url }}" class="text-black rounded-3xl"></img>
+  <body class="">
+    <main class="flex justify-center items-center absolute inset-0 min-h-screen w-full -z-10 bg-gradient-to-br from-zinc-900 to-zinc-950 text-neutral-100">
+        <p id="cat_id" class="hidden">{{ random_cat_id }}</p>
+        <div class="flex justify-center items-center rounded-3xl p-8">
+            <img src="{{ random_cat_url }}" class="text-black rounded-3xl border border-zinc-700 max-h-svh" onclick="downloadCat()"></img>
         </div>
+        
     </main>
-    <footer>
+    {% comment %} <footer>
         <div class="w-full h-48 fixed bottom-0 bg-gradient-to-t from-zinc-950 pointer-events-none">
-    </footer>
+    </footer> {% endcomment %}
   </body>
 </html>
+<script>
+    async function downloadCat() {
+        const catId = document.getElementById("cat_id").innerHTML;
+        console.log(catId);
+        try {
+            const response = await fetch(`/cat/download/${catId}`);
+        } catch (error) {
+            previewElement.textContent = error;
+        }
+    }
+</script>
